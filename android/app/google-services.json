@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "977259834140",
+    "firebase_url": "https://guardian-ai-beacon-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "guardian-ai-beacon",
+    "storage_bucket": "guardian-ai-beacon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977259834140:android:23dd227d1115cd0a67a8d9",
+        "android_client_info": {
+          "package_name": "com.example.guardian_ai_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDufDv4MGuHFOpgKqQWUuSEPqZ0en1RPvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977259834140:android:84e096fc13436bec67a8d9",
+        "android_client_info": {
+          "package_name": "guardianai.com.guardian_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDufDv4MGuHFOpgKqQWUuSEPqZ0en1RPvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
