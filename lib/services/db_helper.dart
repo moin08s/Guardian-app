@@ -16,7 +16,7 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), 'guardian_sos.db');
+    String path = join(await getDatabasesPath(), 'abhaya_sos.db');
     return await openDatabase(
       path,
       version: 2, // Version 2 includes the timestamp column

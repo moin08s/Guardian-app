@@ -1,5 +1,5 @@
-name: guardian_ai
-description: "A safety application with SOS and live mapping."
+name: abhaya
+description: "Abhaya: Proactive Safety, Biometric Monitoring & Live Mapping Application."
 publish_to: 'none'
 
 version: 1.0.0+1

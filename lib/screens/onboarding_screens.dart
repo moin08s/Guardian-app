@@ -114,7 +114,7 @@ class _OnboardingWelcomeScreenState extends State<OnboardingWelcomeScreen> {
             child: const Icon(Icons.shield_outlined, color: obDarkGreen, size: 40),
           ),
           const SizedBox(height: 30),
-          const Text("Guardian AI", style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900, fontFamily: 'serif')),
+          const Text("Abhaya", style: TextStyle(fontSize: 34, fontWeight: FontWeight.w900, fontFamily: 'serif')),
           const SizedBox(height: 10),
           const Text("Proactive safety for the people\nyou love most", textAlign: TextAlign.center, style: TextStyle(color: Colors.black54, fontSize: 16)),
           const Spacer(),
@@ -173,7 +173,7 @@ class _OnboardingWelcomeScreenState extends State<OnboardingWelcomeScreen> {
         children: [
           const Text("Link your device", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'serif')),
           const SizedBox(height: 10),
-          const Text("Pair the Guardian Hub & Strap via\nNearby Share", style: TextStyle(color: Colors.black54, fontSize: 15)),
+          const Text("Pair the Abhaya Hub & Strap via\nNearby Share", style: TextStyle(color: Colors.black54, fontSize: 15)),
           const SizedBox(height: 30),
           
           // Radar Animation Mockup
@@ -204,9 +204,9 @@ class _OnboardingWelcomeScreenState extends State<OnboardingWelcomeScreen> {
             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.grey.shade200)),
             child: Column(
               children: [
-                _buildDeviceRow("Guardian Hub - CSP32-S3", "UNIT_001", "Signal strong", obLightGreen, obDarkGreen, "Pair", obDarkGreen, Colors.white),
+                _buildDeviceRow("Abhaya Hub - ESP32-S3", "UNIT_001", "Signal strong", obLightGreen, obDarkGreen, "Pair", obDarkGreen, Colors.white),
                 Divider(color: Colors.grey.shade100, height: 1),
-                _buildDeviceRow("Guardian Strap - nRF52840", "BLE 5.0 STRAP_001", "", Colors.blue.shade50, Colors.blue, "Pair", Colors.blue.shade50, Colors.blue),
+                _buildDeviceRow("Abhaya Strap - nRF52840", "BLE 5.0 STRAP_001", "", Colors.blue.shade50, Colors.blue, "Pair", Colors.blue.shade50, Colors.blue),
               ],
             ),
           ),

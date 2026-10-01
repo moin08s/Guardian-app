@@ -4,10 +4,14 @@ class AudioService {
   final _record = AudioRecorder();
 
   Future<void> startEmergencyRecording() async {
-    if (await _record.hasPermission()) {
-      // Use high-quality AAC for industrial evidence
-      await _record.start(const RecordConfig(), path: 'emergency_clip.m4a');
-      print("🚨 Recording started: Black Box Active");
+    try {
+      if (await _record.hasPermission()) {
+        // Use high-quality AAC for industrial evidence
+        await _record.start(const RecordConfig(), path: 'emergency_clip.m4a');
+        print("🚨 Recording started: Black Box Active");
+      }
+    } catch (e) {
+      print("Audio recording note: $e");
     }
   }
 

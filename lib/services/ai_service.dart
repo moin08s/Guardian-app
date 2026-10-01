@@ -97,7 +97,7 @@ class AIService {
           "messages": [
             {
               "role": "system",
-              "content": "Guardian AI. $langInstruction Context: SOS is ${isSOSActive ? 'ON' : 'OFF'}. Help: ${helpData['name']}."
+              "content": "Abhaya AI. $langInstruction Context: SOS is ${isSOSActive ? 'ON' : 'OFF'}. Help: ${helpData['name']}."
             },
             {"role": "user", "content": query}
           ],

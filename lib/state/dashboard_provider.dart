@@ -44,7 +44,8 @@ class DashboardProvider extends ChangeNotifier {
   }
 
   void _listenToIOTUpdates() {
-    _db.child('handshake').child(hardwareID).onValue.listen((event) {
+    try {
+      _db.child('handshake').child(hardwareID).onValue.listen((event) {
       if (event.snapshot.value != null) {
         final data = Map<dynamic, dynamic>.from(event.snapshot.value as Map);
 
@@ -77,6 +78,9 @@ class DashboardProvider extends ChangeNotifier {
         }
       }
     });
+    } catch (e) {
+      debugPrint("IoT stream listener note: $e");
+    }
   }
 
   // Update logic called from your IoT Service

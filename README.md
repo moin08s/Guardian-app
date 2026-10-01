@@ -1,82 +1,104 @@
-# Guardian AI: Proactive Safety & Live Mapping Application
+# 🛡️ Abhaya: Proactive Safety & Live Mapping System
 
-Guardian AI is a modern Flutter-based safety application designed for real-time tracking, proactive SOS alert management, and biometric monitoring. The application pairs with external wearable hardware (e.g., ESP32/nRF52-based smart straps and hubs) to automatically detect emergency conditions, such as panic levels, physical strap tampering, or manual triggers, and delivers localized context-aware safety guidance using standalone AI models.
+**Abhaya** (अभय — *Fearlessness & Protection*) is an intelligent, proactive personal safety ecosystem built with Flutter. It integrates real-time GPS tracking, biometric stress sensing (Heart Rate, GSR, SpO2), hardware strap tamper detection, and localized standalone AI guidance to protect loved ones and deliver rapid emergency responses.
 
 ---
 
-## 🚀 Key Features
+## 🌐 Live Web Demo
+Experience the interactive Abhaya application directly in your browser:
+👉 **[Live Working Demo on GitHub Pages](https://moin08s.github.io/Guardian-app/)**
 
-### 🛡️ Dynamic State-Driven Dashboard
-The dashboard adapts instantly to the user's status across three specific modes:
-*   **Safe Mode (`safe`)**: Green-themed interface indicating normal biometrics, secure strap connection, and options for quiet device pinging.
-*   **Panic Mode (`panic`)**: Crimson-themed interface triggered by high stress, hardware button presses, or user request. It immediately starts recording audio, offers dialing shortcuts to nearest emergency stations, and details AI-driven survival guides.
-*   **Tamper Mode (`tamper`)**: Orange-themed alert interface triggered if the wearable strap is forcibly removed or the sensor hub loses I2C connectivity.
+---
 
-### 🧠 Standalone AI Safety Advisor
+## 🚀 Key Capabilities & Features
+
+### 1. 🛡️ Dynamic Multi-State Security Dashboard
+The user interface continuously adapts its security posture and visuals across 3 proactive states:
+*   **Safe State (`safe`)**: Calming green aesthetic. Continuous background biometric monitoring (HR, Calm Index, SpO2, Battery), strap connectivity telemetry, and quiet testing tools.
+*   **Panic State (`panic`)**: High-contrast crimson alert interface triggered by biometric spikes, manual requests, or hardware SOS button. Instantly launches background "Black Box" audio evidence recording, displays navigation hints to the nearest police station, and highlights direct-call emergency shortcuts.
+*   **Tamper State (`tamper`)**: Warning alert mode activated if the wearable strap is forcefully disconnected (`STRAP_REMOVED_BY_FORCE`) or sensor I2C communication fails, preserving last known coordinates for emergency responders.
+
+### 2. 🧠 Standalone AI Safety Advisor
 *   Powered by **LLaMA 3.3-70b** via the Groq API.
-*   Provides immediate, situation-specific survival instructions.
-*   Supports multilingual output, responding in **English**, **Hindi**, or **Marathi** based on the emergency context.
-*   Integrates **OpenStreetMap (OSM) via the Overpass API** to dynamically locate the nearest police station or hospital, including their name, address, and phone number.
+*   Delivers instantaneous, context-aware survival strategies and de-escalation advice.
+*   **Multilingual Support**: Real-time responses in **English**, **Hindi (हिंदी)**, or **Marathi (मराठी)**.
+*   **OpenStreetMap (OSM) Integration**: Dynamically queries the Overpass API to locate the closest police station or hospital, identifying their name, address, and phone number based on current latitude and longitude.
 
-### 📍 Live Tracking & Historical Tracing
-*   Integrated leaflet maps via `flutter_map` displaying live location coordinates, accuracy parameters, and geofenced safe zones (Green Zones).
-*   **Historical Tracing**: Displays a colored path segment showing the user's travel history for any selected calendar date, color-coded by time of day (Morning: Orange, Afternoon: Blue, Night: Purple).
+### 3. 📍 Live Tracking & Historical Travel Paths
+*   Interactive Leaflet mapping layer powered by `flutter_map` and OpenStreetMap tiles.
+*   Displays real-time positioning, precision accuracy (`± 4 m`), and custom geofenced safe zones (*Green Zones*).
+*   **Historical Timeline Playback**: Visualizes travel routes color-coded by time of day (Morning: Orange, Afternoon: Blue, Night: Purple) with an intuitive calendar date selector.
 
-### ⏺️ Audio "Black Box" Recording
-*   Upon any SOS activation, the app utilizes the `record` package to quietly record ambient audio using high-quality AAC compression (`emergency_clip.m4a`) as local and cloud-syncable industrial evidence.
+### 4. 🎙️ "Black Box" Evidence Recording
+*   Upon any SOS trigger, the app quietly initiates audio recording with high-quality AAC compression (`emergency_clip.m4a`) via the `record` package to preserve critical forensic evidence.
 
-### 📶 Offline-First Resiliency & Sync
-*   **Local Caching**: Uses SQLite (`sqflite`) to log GPS coordinates and SOS flags locally if cellular connection drops.
-*   **Auto-Sync**: Listens to connectivity changes (`connectivity_plus`) and automatically uploads all cached offline logs to the cloud (Firebase/PHP bridge server) when network access returns.
-
----
-
-## 📂 Architecture & File Structure
-
-The project follows a clean, decoupled MVC/MVVM-like architecture using the **Provider** pattern:
-
-*   **`lib/main.dart`**: Entrypoint of the app. Initializes Firebase, configures the state providers, and handles the handshake gating interface.
-*   **`lib/models/`**
-    *   [`biometrics.dart`](file:///d:/Hackthon/lib/models/biometrics.dart): Defines the data structure for Heart Rate, SpO2, stress percentages, and physical strap attachment status.
-*   **`lib/state/`**
-    *   [`dashboard_provider.dart`](file:///d:/Hackthon/lib/state/dashboard_provider.dart): Central application state engine. Manages IoT events, Firebase listeners, SOS triggers, and dynamic theme switching.
-*   **`lib/screens/`**
-    *   [`onboarding_screens.dart`](file:///d:/Hackthon/lib/screens/onboarding_screens.dart): Multi-step setup page for onboarding, device pairing, contact setup, and sensor calibration.
-    *   [`main_wrapper_screen.dart`](file:///d:/Hackthon/lib/screens/main_wrapper_screen.dart): Bottom navigation wrapper housing the main tabs.
-    *   [`dashboard_screen.dart`](file:///d:/Hackthon/lib/screens/dashboard_screen.dart): Dynamic dashboard showing biometric state widgets.
-    *   [`map_tab_screen.dart`](file:///d:/Hackthon/lib/screens/map_tab_screen.dart): Tracing maps, manual location search, and date-based history views.
-    *   [`ai_screen.dart`](file:///d:/Hackthon/lib/screens/ai_screen.dart): Conversational UI for the local LLaMA safety advisor.
-    *   [`log_screen.dart`](file:///d:/Hackthon/lib/screens/log_screen.dart): Timeline view of all system, biometric, and panic events.
-    *   [`settings_screen.dart`](file:///d:/Hackthon/lib/screens/settings_screen.dart): Profile settings, trusted contacts management, and manual device controls.
-*   **`lib/services/`**
-    *   [`ai_service.dart`](file:///d:/Hackthon/lib/services/ai_service.dart): Manages Groq API chat completions, OSM Overpass queries, and Exotel automated call dispatches.
-    *   [`audio_service.dart`](file:///d:/Hackthon/lib/services/audio_service.dart): Handles recording/saving emergency audio clips.
-    *   [`db_helper.dart`](file:///d:/Hackthon/lib/services/db_helper.dart): SQLite database setup and query helper.
-    *   [`sync_service.dart`](file:///d:/Hackthon/lib/services/sync_service.dart): Automatically uploads SQLite backlogs to Firebase via a web bridge API.
-*   **`lib/widgets/`**
-    *   [`custom_map.dart`](file:///d:/Hackthon/lib/widgets/custom_map.dart): Decoupled mapping widget layer.
-    *   [`dashboard_ui.dart`](file:///d:/Hackthon/lib/widgets/dashboard_ui.dart): Styling variables, common buttons, text fields, and theme definitions.
+### 5. 📶 Offline-First Resiliency & Cloud Sync
+*   **Local Caching**: Logs telemetry and pending SOS flags in a local SQLite database (`sqflite`).
+*   **Auto-Sync**: Automatically detects network restoration (`connectivity_plus`) and relays queued offline pings to the cloud.
 
 ---
 
-## 🛠️ Installation & Setup
+## 📂 Project Architecture
 
-1.  **Clone the Repository**:
-    ```bash
-    git clone https://github.com/moin08s/Guardian-app.git
-    cd Guardian-app
-    ```
-2.  **Install Dependencies**:
-    ```bash
-    flutter pub get
-    ```
-3.  **Run Application**:
-    ```bash
-    flutter run
-    ```
+```
+lib/
+├── main.dart                  # Application entry point with safe multi-platform initialization
+├── models/
+│   └── biometrics.dart        # Biometrics data model (HR, Stress, SpO2, Strap state)
+├── screens/
+│   ├── onboarding_screens.dart# 4-Step interactive setup (Pairing, Network, Zones, Calibration)
+│   ├── main_wrapper_screen.dart# Bottom navigation router shell
+│   ├── dashboard_screen.dart  # Dynamic status dashboard (Safe, Panic, Tamper)
+│   ├── map_tab_screen.dart    # Live tracking, accuracy info, and date-based history
+│   ├── ai_screen.dart         # Multi-lingual conversational AI advisor
+│   ├── log_screen.dart        # Event timeline and audit log with category filters
+│   └── settings_screen.dart   # Profile, trusted contacts, and device parameters
+├── services/
+│   ├── ai_service.dart        # Groq LLaMA 3.3 client & Overpass OSM emergency queries
+│   ├── audio_service.dart     # Background emergency black-box audio recorder
+│   ├── db_helper.dart         # Local SQLite storage (abhaya_sos.db)
+│   └── sync_service.dart      # Network sync observer to relay offline alerts
+├── state/
+│   └── dashboard_provider.dart# Central reactive state engine (Provider pattern)
+└── widgets/
+    ├── custom_map.dart        # Reusable map layer with custom markers & geofences
+    └── dashboard_ui.dart      # Consistent design system, colors, cards, and buttons
+```
 
 ---
 
-## 🔒 Security & Privacy
-*   All biometric algorithms and thresholds are checked locally.
-*   "Black-box" audio recording stays stored on-device and is only dispatched to your trusted contacts or your configured private bridge endpoint.
+## 🛠️ Getting Started
+
+### Prerequisites
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (>= 3.11.0)
+- Android Studio / VS Code with Flutter extension
+- An Android Device or Emulator (API 24+) or Modern Web Browser
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/moin08s/Guardian-app.git
+   cd Guardian-app
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   flutter pub get
+   ```
+
+3. **Run on Connected Device / Emulator**:
+   ```bash
+   flutter run
+   ```
+
+4. **Run on Web Browser**:
+   ```bash
+   flutter run -d chrome
+   ```
+
+---
+
+## 🔒 Privacy & Permissions
+- All biometric thresholds and baseline calibrations are computed locally on-device.
+- Audio recording only activates when SOS panic triggers are confirmed.

@@ -81,7 +81,7 @@ class DashboardScreen extends StatelessWidget {
                     // LOGO HEADER
                     Row(
                       children: [
-                        const Text("Guardian", style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, fontFamily: 'serif')), // Serif simulation
+                        const Text("Abhaya", style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, fontFamily: 'serif')), // Serif simulation
                         const SizedBox(width: 5),
                         Text("AI", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: panicRedText.withOpacity(0.6))),
                       ],
@@ -133,7 +133,7 @@ class DashboardScreen extends StatelessWidget {
                         onTap: () {
                           // Allow parent to quietly ping or test connect to the device.
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("Ping sent to Guardian Hub."))
+                            const SnackBar(content: Text("Ping sent to Abhaya Hub."))
                           );
                         }
                       ),

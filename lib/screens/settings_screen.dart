@@ -56,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               const Text("Priya\nSharma", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'serif', height: 1.1)),
                               const SizedBox(height: 4),
-                              Text("Guardian AI - Unit 001", style: TextStyle(color: Colors.black45, fontSize: 13)),
+                              Text("Abhaya AI - Unit 001", style: TextStyle(color: Colors.black45, fontSize: 13)),
                             ],
                           ),
                         ),
