@@ -78,9 +78,9 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           const Text("TRUSTED CONTACTS", style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.black45, letterSpacing: 1.5)),
                           const SizedBox(height: 15),
-                          _buildContactRow("M", "Mom", "+91 98765 43210", Colors.teal),
+                          _buildContactRow("M", "Mom", "+91 ••••• ••210", Colors.teal),
                           const SizedBox(height: 15),
-                          _buildContactRow("R", "Rahul", "+91 98765 43211", Colors.orange),
+                          _buildContactRow("R", "Rahul", "+91 ••••• ••211", Colors.orange),
                           const SizedBox(height: 15),
                           Divider(color: Colors.grey.shade200),
                           const SizedBox(height: 5),

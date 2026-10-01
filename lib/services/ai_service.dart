@@ -31,9 +31,9 @@ class AIService {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: {
-          'From': '+919373149349',
-          'To': '+919373149349',
-          'CallerId': '02048557941',
+          'From': const String.fromEnvironment('EXOTEL_FROM', defaultValue: '+91 ••••• ••••'),
+          'To': const String.fromEnvironment('EXOTEL_TO', defaultValue: '+91 ••••• ••••'),
+          'CallerId': const String.fromEnvironment('EXOTEL_CALLER_ID', defaultValue: '020••••••••'),
           'CallType': 'trans',
           'Url': "http://twimlets.com/message?Message[0]=${Uri.encodeComponent(message)}&Language=$voiceCode",
         },
@@ -69,7 +69,7 @@ class AIService {
     } catch (e) {
       print("OSM/Overpass Error: $e");
     }
-    return {'name': 'Emergency Contact', 'phone': '+91 9373149349'};
+    return {'name': 'Emergency Services', 'phone': '112'};
   }
 
   // Generates AI advice

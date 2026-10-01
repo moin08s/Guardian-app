@@ -43,7 +43,7 @@ class SyncService {
           // 3. GET AI ADVICE (Optional but good for UI)
           Map<String, String> testHelpData = {
             'name': 'Emergency Control',
-            'phone': '+91 9373149349',
+            'phone': '112',
             'address': 'Simulated Police Station'
           };
 

@@ -283,9 +283,9 @@ class _OnboardingWelcomeScreenState extends State<OnboardingWelcomeScreen> {
             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.grey.shade200)),
             child: Column(
               children: [
-                _buildContactItem("M", "Mom", "+91 98765 43210", Colors.teal, true),
+                _buildContactItem("M", "Mom", "+91 ••••• ••210", Colors.teal, true),
                 const SizedBox(height: 15),
-                _buildContactItem("R", "Rahul (Brother)", "+91 98765 43211", Colors.blue, false),
+                _buildContactItem("R", "Rahul (Brother)", "+91 ••••• ••211", Colors.blue, false),
                 const SizedBox(height: 20),
                 
                 // Add contact form area
